@@ -1,0 +1,82 @@
+<% layout('/layouts/boilerplate') -%>
+   <div class="row mt-3">
+    <div class="col-8 offset-2">
+    <h3>Edit Your Listing</h3>
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+      <div class="mb-3 mt-3">
+        <label for="title" class="form-label">Edit Catchy Title</label>
+        <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required/>
+        <div class="valid-feedback">Title Looks Good! No Changes required</div>
+
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Edit Description</label>
+        <textarea name="listing[description]" class="form-control" required> <%= listing.description %></textarea>
+        <div class="invalid-feedback">Enter short Description!</div>
+
+      </div>
+
+      <div class="mb-3">
+       Original Listing Image <br>
+       <img src="<%= originalImageUrl %>" alt="image" height="200px">
+              </div>
+
+      <div class="mb-3">
+  <label for="image" class="form-label">Upload New Image File</label>
+        <input
+          name="listing[image]"
+          type="file"
+          class="form-control"
+        />
+        <div class="invalid-feedback">Enter valid Image File</div>
+
+      </div>
+
+      <div class="row mb-3">
+        <!-- <div class="mb-3 col-md-4"> -->
+          <label for="category" class="form-label">Select a Listing Category</label>
+          <select class="form-select form-select-sm" id="category" name="listing[category]">
+            <option value ="Trending" selected>Trending</option>
+            <option value="Iconic cities">Iconic cities</option>
+            <option value="Rooms">Rooms</option>
+            <option value="Mountains">Mountains</option>
+            <option value="Castles">Castles</option>
+            <option value="Amazing Pools">Amazing Pools</option>
+            <option value="Farms">Farms</option>
+            <option value="Arctic">Arctic</option>
+            <option value="Domes">Domes</option>
+            <option value="New">New</option>
+          </select>
+        </div>
+
+      <div class="row">
+        <div class="mb-3 col-4">
+     <label for="price" class="form-label">Edit Price</label>
+          <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required/>
+          <div class="invalid-feedback">Enter valid Price!</div>
+        </div>
+
+        <div class="mb-3 col-8">
+        <label for="country" class="form-label">Edit Country</label>
+          <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control"required/>
+          <div class="invalid-feedback">Enter valid Country Name!</div>
+
+        </div>
+      </div>
+
+      <div class="mb-3">
+       <label for="location" class="form-label">Edit Location</label>
+        <input
+          name="listing[location]"
+          value="<%= listing.location %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Enter valid Location</div>
+      </div>
+      <button class="btn edit-btn mt-3">Edit</button>
+    </form>
+    </div>
+    </div>
+
